@@ -6,7 +6,7 @@
 
 function Diy_Part1() {
 	find . -type d -name 'luci-app-autoupdate' | xargs -i rm -rf {}
-	git clone -b main https://github.com/281677160/luci-app-autoupdate $HOME_PATH/package/luci-app-autoupdate 2>/dev/null
+	git clone -b main https://github.com/linai081795/luci-app-autoupdate $HOME_PATH/package/luci-app-autoupdate 2>/dev/null
 	if [[ `grep -c "luci-app-autoupdate" ${HOME_PATH}/include/target.mk` -eq '0' ]]; then
 		sed -i 's?DEFAULT_PACKAGES:=?DEFAULT_PACKAGES:=luci-app-autoupdate luci-app-ttyd ?g' ${HOME_PATH}/include/target.mk
 	fi
@@ -27,7 +27,7 @@ function Diy_Part2() {
 	export Release_download1="${GITHUB_LINK}/releases/download/${Update_tag}"
 	export Release_download2="https://mirror.ghproxy.com/${GITHUB_LINK}/releases/download/${Update_tag}"
 	export Github_Release="${GITHUB_LINK}/releases/tag/${Update_tag}"
-	
+
 	if [[ "${TARGET_PROFILE}" =~ (phicomm_k3|phicomm-k3) ]]; then
 		export TARGET_PROFILE_ER="phicomm-k3"
 	elif [[ "${TARGET_PROFILE}" =~ (k2p|phicomm_k2p|phicomm-k2p) ]]; then
@@ -41,7 +41,7 @@ function Diy_Part2() {
 	else
 		export TARGET_PROFILE_ER="${TARGET_PROFILE}"
 	fi
-	
+
 	case "${TARGET_BOARD}" in
 	ramips | reltek | ath* | ipq* | bcm47xx | bmips | kirkwood | mediatek)
 		export Firmware_SFX=".bin"
@@ -77,22 +77,22 @@ function Diy_Part2() {
 		export AutoBuild_Firmware="${LUCI_EDITION}-${SOURCE}-${TARGET_PROFILE_ER}-${Upgrade_Date}-sysupgrade"
 	;;
 	esac
-	
+
 	if [[ -f "${HOME_PATH}/package/luci-app-autoupdate/root/usr/bin/AutoUpdate" ]]; then
 		export AutoUpdate_Version=$(grep -Eo "Version=V[0-9.]+" "${HOME_PATH}/package/luci-app-autoupdate/root/usr/bin/AutoUpdate" |grep -Eo [0-9.]+)
 	fi
-	
+
 	export Openwrt_Version="${SOURCE}-${TARGET_PROFILE_ER}-${Upgrade_Date}"
 	export LOCAL_FIRMW="${LUCI_EDITION}-${SOURCE}"
 	export CLOUD_CHAZHAO="${LUCI_EDITION}-${SOURCE}-${TARGET_PROFILE_ER}"
-	
+
 	if [[ "${TARGET_BOARD}" == "x86" ]]; then
 		echo "AutoBuild_Uefi=${AutoBuild_Uefi}" >> ${GITHUB_ENV}
 		echo "AutoBuild_Legacy=${AutoBuild_Legacy}" >> ${GITHUB_ENV}
 	else
 		echo "AutoBuild_Firmware=${AutoBuild_Firmware}" >> ${GITHUB_ENV}
 	fi
-	
+
 	echo "Update_tag=${Update_tag}" >> ${GITHUB_ENV}
 	echo "Firmware_SFX=${Firmware_SFX}" >> ${GITHUB_ENV}
 	echo "AutoUpdate_Version=${AutoUpdate_Version}" >> ${GITHUB_ENV}
@@ -128,12 +128,12 @@ function Diy_Part3() {
 	echo "BIN_PATH=${BIN_PATH}" >> ${GITHUB_ENV}
  	[[ -f "${GITHUB_ENV}" ]] && source ${GITHUB_ENV}
 	[[ ! -d "${BIN_PATH}" ]] && mkdir -p "${BIN_PATH}" || rm -rf "${BIN_PATH}"/*
-	
+
 	cd "${FIRMWARE_PATH}"
 	if [[ `ls -1 |grep -c ".img"` -ge '1' ]] && [[ `ls -1 |grep -c ".img.gz"` -eq '0' ]]; then
 		gzip -f9n *.img
 	fi
-	
+
 	case "${TARGET_BOARD}" in
 	x86)
 		if [[ `ls -1 | grep -c "efi"` -ge '1' ]]; then
@@ -148,7 +148,7 @@ function Diy_Part3() {
 		else
 			echo "没有uefi格式固件"
 		fi
-		
+
 		if [[ `ls -1 | grep -c "squashfs"` -ge '1' ]]; then
 			LEGA_ZHONGZHUAN="$(ls -1 |grep -Eo ".*squashfs.*img.gz" |grep -v ".vm\|.vb\|.vh\|.qco\|efi\|root")"
 			if [[ -f "${LEGA_ZHONGZHUAN}" ]]; then

@@ -1,9 +1,9 @@
 #!/bin/sh
 
 #====================================================
-#	MANUFACTURER:	281677160
+#	MANUFACTURER:	linai081795
 #	Dscription: openwrt onekey Management
-#	github: https://github.com/281677160/build-actions
+#	github: https://github.com/linai081795/build-actions
 #====================================================
 
 # 字体颜色配置
@@ -96,7 +96,7 @@ function qingkong_mima() {
 while :; do
 read -p "否清空密码(shi fou qing kong mi ma)[Y/n]：" YN
 case ${YN} in
-[Yy]) 
+[Yy])
     if [[ `grep -c "admin" /etc/shadow` -eq '1' ]]; then
       passwd -d admin
       passwd -d root
@@ -123,7 +123,7 @@ echo
 while :; do
 read -p "是否重启系统(shi fou chong qi xi tong)[Y/n]：" YN
 case ${YN} in
-[Yy]) 
+[Yy])
     ECHOG "系统重启中，稍后自行登录openwrt后台"
     uci set argon.@global[0].bing_background=0
     uci commit argon
@@ -178,7 +178,7 @@ reboot
 
 menu2() {
   clear
-  echo  
+  echo
   ECHOB "  请选择执行命令编码"
   ECHOYY " 1. 修改后台IP和清空密码(xiu gai hou tai IP)"
   ECHOY " 2. 清空密码(qing kong mi ma)"
@@ -220,7 +220,7 @@ menu2() {
 
 menu() {
   clear
-  echo  
+  echo
   ECHOB "  请选择执行命令编码"
   ECHOY " 1. 在线更新固件或转换其他作者固件(zai xian sheng ji gu jian)"
   ECHOYY " 2. 修改后台IP和清空密码(xiu gai hou tai IP)"

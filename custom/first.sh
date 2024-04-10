@@ -1,5 +1,5 @@
 #!/bin/bash
-# https://github.com/281677160/build-actions
+# https://github.com/linai081795/build-actions
 # common Module by 28677160
 # matrix.target=${FOLDER_NAME}
 cd ${GITHUB_WORKSPACE}
@@ -9,11 +9,11 @@ cd ${GITHUB_WORKSPACE}
 if [[ -n "${BENDI_VERSION}" ]]; then
   sudo rm -rf build common.sh
 else
-  sudo rm -rf build/common && git clone -b main --depth 1 https://github.com/281677160/common build/common
+  sudo rm -rf build/common && git clone -b main --depth 1 https://github.com/linai081795/common build/common
   cp -Rf build/common/*.sh build/${FOLDER_NAME}/
   cp -Rf build/common/common.sh build/${FOLDER_NAME}/common.sh
   cp -Rf build/common/upgrade.sh build/${FOLDER_NAME}/upgrade.sh
-  chmod -R +x build 
+  chmod -R +x build
 fi
 }
 
@@ -25,7 +25,7 @@ if [[ -n "${BENDI_VERSION}" ]]; then
 else
   git clone -b main https://user:${REPO_TOKEN}@github.com/${GIT_REPOSITORY}.git repogx
 fi
-git clone -b main --depth 1 https://github.com/281677160/build-actions shangyou
+git clone -b main --depth 1 https://github.com/linai081795/build-actions shangyou
 
 if [[ ! -d "repogx" ]]; then
   echo -e "\033[31m 本地仓库下载错误 \033[0m"
@@ -143,11 +143,11 @@ do
     cp -Rf ${GITHUB_WORKSPACE}/shangyou/.github/workflows/Immortalwrt.yml ${f}
   elif [[ "${SOURCE_CODE1}" == "COOLSNOWWOLF" ]]; then
     cp -Rf ${GITHUB_WORKSPACE}/shangyou/.github/workflows/Lede.yml ${f}
-  elif [[ "${SOURCE_CODE1}" == "LIENOL" ]]; then 
+  elif [[ "${SOURCE_CODE1}" == "LIENOL" ]]; then
     cp -Rf ${GITHUB_WORKSPACE}/shangyou/.github/workflows/Lienol.yml ${f}
   elif [[ "${SOURCE_CODE1}" == "OFFICIAL" ]]; then
     cp -Rf ${GITHUB_WORKSPACE}/shangyou/.github/workflows/Official.yml ${f}
-  elif [[ "${SOURCE_CODE1}" == "XWRT" ]]; then 
+  elif [[ "${SOURCE_CODE1}" == "XWRT" ]]; then
     cp -Rf ${GITHUB_WORKSPACE}/shangyou/.github/workflows/Xwrt.yml ${f}
   fi
   [ ! -d "${GITHUB_WORKSPACE}/operates/${a}" ] && rm -rf "${f}"
@@ -178,7 +178,7 @@ done
 
 cp -Rf ${GITHUB_WORKSPACE}/shangyou/README.md ${GITHUB_WORKSPACE}/repogx/README.md
 cp -Rf ${GITHUB_WORKSPACE}/shangyou/LICENSE ${GITHUB_WORKSPACE}/repogx/LICENSE
-  
+
 cp -Rf ${GITHUB_WORKSPACE}/shangyou/.github/workflows/compile.yml ${GITHUB_WORKSPACE}/repogx/.github/workflows/compile.yml
 cp -Rf ${GITHUB_WORKSPACE}/shangyou/.github/workflows/packaging.yml ${GITHUB_WORKSPACE}/repogx/.github/workflows/packaging.yml
 cp -Rf ${GITHUB_WORKSPACE}/shangyou/.github/workflows/institution.yml ${GITHUB_WORKSPACE}/repogx/.github/workflows/institution.yml
@@ -227,7 +227,7 @@ sudo rm -rf ${GITHUB_WORKSPACE}/repogx/*
 cp -Rf ${GITHUB_WORKSPACE}/shangyou/* ${GITHUB_WORKSPACE}/repogx/
 sudo rm -rf ${GITHUB_WORKSPACE}/repogx/.github/workflows/*
 cp -Rf ${GITHUB_WORKSPACE}/shangyou/.github/workflows/* ${GITHUB_WORKSPACE}/repogx/.github/workflows/
-for X in $(find "${GITHUB_WORKSPACE}/repogx" -type d -name "relevance" |grep -v 'backups'); do 
+for X in $(find "${GITHUB_WORKSPACE}/repogx" -type d -name "relevance" |grep -v 'backups'); do
   rm -rf ${X}/{*.ini,*start}
   echo "ACTIONS_VERSION=${ACTIONS_VERSION}" > ${X}/actions_version
   echo "请勿修改和删除此文件夹内的任何文件" > ${X}/README
@@ -255,7 +255,7 @@ BRANCH_HEAD="$(git rev-parse --abbrev-ref HEAD)"
 if [[ "${OPERATES_BUILD}" == "1" ]]; then
   rm -rf backups
 fi
-if [[ "${GIT_REPOSITORY}" =~ (281677160/build-actions|281677160/autobuild) ]]; then
+if [[ "${GIT_REPOSITORY}" =~ (linai081795/build-actions|linai081795/autobuild) ]]; then
   rm -rf backups
   BANBEN_SHUOMING="Update $(date +%Y.%m%d.%H%M.%S)"
 fi
@@ -301,16 +301,16 @@ exit 0
 function Diy_memu() {
 cd ${GITHUB_WORKSPACE}
 export OPERATES_BUILD="0"
-curl -fsSL https://raw.githubusercontent.com/281677160/common/main/common.sh -o common.sh
+curl -fsSL https://raw.githubusercontent.com/linai081795/common/main/common.sh -o common.sh
 if [[ $? -ne 0 ]]; then
-  wget -q https://raw.githubusercontent.com/281677160/common/main/common.sh -O common.sh
+  wget -q https://raw.githubusercontent.com/linai081795/common/main/common.sh -O common.sh
 fi
 export ACTIONS_VERSION="$(grep -E "ACTIONS_VERSION=.*" "common.sh" |grep -Eo [0-9]+\.[0-9]+\.[0-9]+)"
 export DIY_PART_SH="$(grep -Eo "DIY_PART_SH=.*" "common.sh" |grep '.sh' |awk 'NR==1' |cut -d'"' -f2)"
 echo "DIY_PART_SH=${DIY_PART_SH}" >> ${GITHUB_ENV}
 if [[ -n "${BENDI_VERSION}" ]]; then
   export BENDI_VERSION="1"
-  export GIT_REPOSITORY="281677160/build-actions"
+  export GIT_REPOSITORY="linai081795/build-actions"
   sudo rm -rf build common.sh
   [[ -d "operates" ]] && cp -Rf operates build
   sed -i '/TONGBU_BENDI/d' ${GITHUB_ENV}
