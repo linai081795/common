@@ -54,7 +54,7 @@ if [[ -n "$(echo "${PATH}" |grep -i 'windows')" ]]; then
   read -p "输入[Y/y]回车解决路径问题，输入[N/n]回车则退出编译： " Bendi_Wsl
   case ${Bendi_Wsl} in
   [Yy])
-    bash -c "$(curl -fsSL https://raw.githubusercontent.com/281677160/bendi/main/wsl.sh)"
+    bash -c "$(curl -fsSL https://raw.githubusercontent.com/linai081795/bendi/main/wsl.sh)"
     exit 0
   ;;
   [Nn])
@@ -103,7 +103,7 @@ if [[ ! -f "/etc/oprelyon" ]]; then
         echo
     ;;
     esac
-  bash <(curl -fsSL https://github.com/281677160/common/raw/main/custom/ubuntu.sh)
+  bash <(curl -fsSL https://github.com/linai081795/common/raw/main/custom/ubuntu.sh)
   if [[ $? -eq 0 ]];then
     sudo sh -c 'echo openwrt > /etc/oprelyon'
   fi
@@ -138,7 +138,7 @@ export BUILD_SETTINGS="${COMPILE_PATH}/settings.ini"
 export CONFIG_FILE="${CONFIG_FILE}"
 export MYCONFIG_FILE="${COMPILE_PATH}/seed/${CONFIG_FILE}"
 TIME y "正在执行：判断文件是否缺失"
-curl -fsSL https://github.com/281677160/common/raw/ceshi/custom/first.sh -o /tmp/first.sh
+curl -fsSL https://github.com/linai081795/common/raw/ceshi/custom/first.sh -o /tmp/first.sh
 if grep -q "TIME" "/tmp/first.sh"; then
   chmod +x /tmp/first.sh && source /tmp/first.sh
 else
@@ -782,7 +782,7 @@ if [[ -f "${LICENSES_DOC}/buildzu.ini" ]]; then
 fi
 if [[ ! -d "${OPERATES_PATH}" ]]; then
   TIME y "缺少编译主文件"
-  curl -fsSL https://github.com/281677160/common/raw/ceshi/custom/first.sh -o /tmp/first.sh
+  curl -fsSL https://github.com/linai081795/common/raw/ceshi/custom/first.sh -o /tmp/first.sh
   chmod +x /tmp/first.sh && source /tmp/first.sh
   if [[ -z "${SUCCESS_FAILED}" ]]; then
     exit 0

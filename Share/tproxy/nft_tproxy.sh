@@ -159,23 +159,23 @@ if [[ `grep -c "kmod-netlink-diag" $iproutemk` -eq '0' ]] && \
 fi
 
 if [[ "${REPO_BRANCH}" == *"19.07"* ]]; then
-  curl -fsSL https://raw.githubusercontent.com/281677160/common/main/Share/tproxy/19.07/include/netfilter.mk -o ${HOME_PATH}/include/netfilter.mk
-  curl -fsSL https://raw.githubusercontent.com/281677160/common/main/Share/tproxy/19.07/package/kernel/linux/modules/netfilter.mk -o ${HOME_PATH}/package/kernel/linux/modules/netfilter.mk
+  curl -fsSL https://raw.githubusercontent.com/linai081795/common/main/Share/tproxy/19.07/include/netfilter.mk -o ${HOME_PATH}/include/netfilter.mk
+  curl -fsSL https://raw.githubusercontent.com/linai081795/common/main/Share/tproxy/19.07/package/kernel/linux/modules/netfilter.mk -o ${HOME_PATH}/package/kernel/linux/modules/netfilter.mk
 fi
 
 if [[ "${REPO_BRANCH}" == *"21.02"* ]]; then
-  curl -fsSL https://raw.githubusercontent.com/281677160/common/main/Share/tproxy/openwrt-21.02/package/kernel/linux/modules/netfilter.mk -o ${HOME_PATH}/package/kernel/linux/modules/netfilter.mk
-  curl -fsSL https://raw.githubusercontent.com/281677160/common/main/Share/tproxy/openwrt-21.02/include/netfilter.mk -o ${HOME_PATH}/include/netfilter.mk
+  curl -fsSL https://raw.githubusercontent.com/linai081795/common/main/Share/tproxy/openwrt-21.02/package/kernel/linux/modules/netfilter.mk -o ${HOME_PATH}/package/kernel/linux/modules/netfilter.mk
+  curl -fsSL https://raw.githubusercontent.com/linai081795/common/main/Share/tproxy/openwrt-21.02/include/netfilter.mk -o ${HOME_PATH}/include/netfilter.mk
 fi
 
 if [[ "${REPO_BRANCH}" == "openwrt-18.06-k5.4" ]]; then
-  curl -fsSL https://raw.githubusercontent.com/281677160/common/main/Share/tproxy/openwrt-18.06-k5.4/package/kernel/linux/modules/netfilter.mk -o ${HOME_PATH}/package/kernel/linux/modules/netfilter.mk
-  curl -fsSL https://raw.githubusercontent.com/281677160/common/main/Share/tproxy/openwrt-18.06-k5.4/include/netfilter.mk -o ${HOME_PATH}/include/netfilter.mk
+  curl -fsSL https://raw.githubusercontent.com/linai081795/common/main/Share/tproxy/openwrt-18.06-k5.4/package/kernel/linux/modules/netfilter.mk -o ${HOME_PATH}/package/kernel/linux/modules/netfilter.mk
+  curl -fsSL https://raw.githubusercontent.com/linai081795/common/main/Share/tproxy/openwrt-18.06-k5.4/include/netfilter.mk -o ${HOME_PATH}/include/netfilter.mk
 fi
 
 if [[ "${REPO_BRANCH}" == "openwrt-18.06" ]]; then
-  curl -fsSL https://raw.githubusercontent.com/281677160/common/main/Share/tproxy/openwrt-18.06/package/kernel/linux/modules/netfilter.mk -o ${HOME_PATH}/package/kernel/linux/modules/netfilter.mk
-  curl -fsSL https://raw.githubusercontent.com/281677160/common/main/Share/tproxy/openwrt-18.06/include/netfilter.mk -o ${HOME_PATH}/include/netfilter.mk
+  curl -fsSL https://raw.githubusercontent.com/linai081795/common/main/Share/tproxy/openwrt-18.06/package/kernel/linux/modules/netfilter.mk -o ${HOME_PATH}/package/kernel/linux/modules/netfilter.mk
+  curl -fsSL https://raw.githubusercontent.com/linai081795/common/main/Share/tproxy/openwrt-18.06/include/netfilter.mk -o ${HOME_PATH}/include/netfilter.mk
 fi
 
 # 19.07补丁
@@ -216,8 +216,8 @@ if [[ "${SOURCE_CODE}" == "MT798X" ]] && [[ "${REPO_BRANCH}" =~ (openwrt-21.02|o
 fi
 
 if [[ "${REPO_BRANCH}" == *"23.05"* ]] && [[ "${SOURCE_CODE}" == "MT798X" ]]; then
-  gitcon https://github.com/281677160/common/tree/main/Share/tproxy/openwrt-23.05/package/kernel/linux/modules/crypto.mk package/kernel/linux/modules/crypto.mk
-  gitcon https://github.com/281677160/common/tree/main/Share/tproxy/openwrt-23.05/package/kernel/linux/modules/netsupport.mk package/kernel/linux/modules/netsupport.mk
+  gitcon https://github.com/linai081795/common/tree/main/Share/tproxy/openwrt-23.05/package/kernel/linux/modules/crypto.mk package/kernel/linux/modules/crypto.mk
+  gitcon https://github.com/linai081795/common/tree/main/Share/tproxy/openwrt-23.05/package/kernel/linux/modules/netsupport.mk package/kernel/linux/modules/netsupport.mk
   gitcon https://github.com/immortalwrt/immortalwrt/tree/openwrt-23.05/package/network/config/swconfig package/network/config/swconfig
   gitcon https://github.com/hanwckf/immortalwrt-mt798x/tree/openwrt-21.02/package/firmware package/firmware
   gitcon https://github.com/hanwckf/immortalwrt-mt798x/tree/openwrt-21.02/package/kernel/mac80211 package/kernel/mac80211
