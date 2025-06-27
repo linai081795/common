@@ -322,6 +322,8 @@ cd ${HOME_PATH}
 rm -rf $HOME_PATH/feeds/packages/net/miniupnpd
 rm -rf $HOME_PATH/feeds/packages/net/tailscale
 gitsvn https://github.com/openwrt/packages/tree/master/net/tailscale ${HOME_PATH}/feeds/packages/net/tailscale
+gitsvn https://github.com/asvow/luci-app-tailscale ${HOME_PATH}/package/luci-app-tailscale
+
 if [[ -d "${HOME_PATH}/feeds/other/lean" ]]; then
   rm -rf ${HOME_PATH}/feeds/other/lean/mt
   rm -rf ${HOME_PATH}/feeds/other/lean/luci-app-vlmcsd
