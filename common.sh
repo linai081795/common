@@ -320,10 +320,10 @@ rm -rf ${HOME_PATH}/package/wwan/driver
 function Diy_LIENOL() {
 cd ${HOME_PATH}
 rm -rf $HOME_PATH/feeds/packages/net/miniupnpd
-# gitsvn https://github.com/openwrt/packages/tree/master/net/tailscale ${HOME_PATH}/feeds/packages/net/tailscale
-# sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' ${HOME_PATH}/feeds/packages/net/tailscale/Makefile
-# rm -rf ${HOME_PATH}/package/luci-app-tailscale
-# gitsvn https://github.com/asvow/luci-app-tailscale ${HOME_PATH}/package/luci-app-tailscale
+gitsvn https://github.com/openwrt/packages/tree/master/net/tailscale ${HOME_PATH}/feeds/packages/net/tailscale
+sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' ${HOME_PATH}/feeds/packages/net/tailscale/Makefile
+rm -rf ${HOME_PATH}/package/luci-app-tailscale
+gitsvn https://github.com/asvow/luci-app-tailscale ${HOME_PATH}/package/luci-app-tailscale
 
 if [[ -d "${HOME_PATH}/feeds/other/lean" ]]; then
   rm -rf ${HOME_PATH}/feeds/other/lean/mt
