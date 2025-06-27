@@ -219,6 +219,7 @@ luci-app-ssr-plus,luci-app-passwall,luci-app-passwall2,shadowsocksr-libev,v2dat,
 luci-app-wechatpush,v2ray-core,v2ray-plugin,v2raya,xray-core,xray-plugin,luci-app-alist,alist"
 t=(${z//,/ })
 for x in "${t[@]}"; do
+    echo "移除${x}"
     find "${HOME_PATH}/feeds" "${HOME_PATH}/package" \
         -path "${HOME_PATH}/feeds/danshui" -prune -o \
         -path "${HOME_PATH}/feeds/dstheme" -prune -o \
