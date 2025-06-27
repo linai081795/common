@@ -210,7 +210,7 @@ fi
 
 # 更新feeds后再次修改补充
 cd ${HOME_PATH}
-z="luci-theme-argon,luci-theme-Butterfly,luci-theme-netgear,luci-theme-atmaterial, \
+z="luci-theme-argon,luci-app-argon-config,luci-theme-Butterfly,luci-theme-netgear,luci-theme-atmaterial, \
 luci-theme-rosy,luci-theme-darkmatter,luci-theme-infinityfreedom,luci-theme-design,luci-app-design-config, \
 luci-theme-bootstrap-mod,luci-theme-freifunk-generic,luci-theme-opentomato,luci-theme-kucat, \
 luci-app-eqos,adguardhome,luci-app-adguardhome,mosdns,luci-app-mosdns,luci-app-openclash, \
@@ -219,7 +219,6 @@ luci-app-ssr-plus,luci-app-passwall,luci-app-passwall2,shadowsocksr-libev,v2dat,
 luci-app-wechatpush,v2ray-core,v2ray-plugin,v2raya,xray-core,xray-plugin,luci-app-alist,alist"
 t=(${z//,/ })
 for x in "${t[@]}"; do
-    echo "移除${x}"
     find "${HOME_PATH}/feeds" "${HOME_PATH}/package" \
         -path "${HOME_PATH}/feeds/danshui" -prune -o \
         -path "${HOME_PATH}/feeds/dstheme" -prune -o \
