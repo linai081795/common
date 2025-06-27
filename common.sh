@@ -216,7 +216,7 @@ z="luci-theme-argon,luci-app-argon-config,luci-theme-Butterfly,luci-theme-netgea
 luci-theme-rosy,luci-theme-darkmatter,luci-theme-infinityfreedom,luci-theme-design,luci-app-design-config, \
 luci-theme-bootstrap-mod,luci-theme-freifunk-generic,luci-theme-opentomato,luci-theme-kucat, \
 luci-app-eqos,adguardhome,luci-app-adguardhome,mosdns,luci-app-mosdns,luci-app-openclash, \
-luci-app-gost,gost,luci-app-smartdns,smartdns,luci-app-wizard,luci-app-msd_lite,msd_lite, \
+luci-app-gost,gost,luci-app-smartdns,smartdns,luci-app-wizard,luci-app-msd_lite,msd_lite, luci-app-tailscale, tailscale, \
 luci-app-ssr-plus,luci-app-passwall,luci-app-passwall2,shadowsocksr-libev,v2dat,v2ray-geodata, \
 luci-app-wechatpush,v2ray-core,v2ray-plugin,v2raya,xray-core,xray-plugin,luci-app-alist,alist"
 t=(${z//,/ })
@@ -320,9 +320,6 @@ rm -rf ${HOME_PATH}/package/wwan/driver
 function Diy_LIENOL() {
 cd ${HOME_PATH}
 rm -rf $HOME_PATH/feeds/packages/net/miniupnpd
-rm -rf $HOME_PATH/feeds/packages/net/tailscale
-rm -rf $HOME_PATH/feeds/luci/applications/luci-app-tailscale
-
 gitsvn https://github.com/openwrt/packages/tree/master/net/tailscale ${HOME_PATH}/feeds/packages/net/tailscale
 sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' ${HOME_PATH}feeds/packages/net/tailscale/Makefile
 gitsvn https://github.com/asvow/luci-app-tailscale ${HOME_PATH}/package/luci-app-tailscale
