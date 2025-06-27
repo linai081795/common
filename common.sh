@@ -210,7 +210,7 @@ fi
 
 # 更新feeds后再次修改补充
 cd ${HOME_PATH}
-z="luci-theme-argon,luci-app-argon-config,luci-theme-Butterfly,luci-theme-netgear,luci-theme-atmaterial, \
+z="luci-theme-argon,luci-theme-Butterfly,luci-theme-netgear,luci-theme-atmaterial, \
 luci-theme-rosy,luci-theme-darkmatter,luci-theme-infinityfreedom,luci-theme-design,luci-app-design-config, \
 luci-theme-bootstrap-mod,luci-theme-freifunk-generic,luci-theme-opentomato,luci-theme-kucat, \
 luci-app-eqos,adguardhome,luci-app-adguardhome,mosdns,luci-app-mosdns,luci-app-openclash, \
@@ -318,6 +318,7 @@ rm -rf ${HOME_PATH}/package/wwan/driver
 function Diy_LIENOL() {
 cd ${HOME_PATH}
 rm -rf $HOME_PATH/feeds/packages/net/miniupnpd
+rm -rf $HOME_PATH/feeds/packages/net/tailscale
 gitsvn https://github.com/openwrt/packages/tree/master/net/tailscale ${HOME_PATH}/feeds/packages/net/tailscale
 if [[ -d "${HOME_PATH}/feeds/other/lean" ]]; then
   rm -rf ${HOME_PATH}/feeds/other/lean/mt
