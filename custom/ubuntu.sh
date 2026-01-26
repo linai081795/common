@@ -42,7 +42,7 @@ update-alternatives --config g++
 
 cd $TMP_DIR
 # 安装golang
-GO_VERSION="1.25.6"
+GO_VERSION="1.26rc2"
 wget -q https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz -O /tmp/go${GO_VERSION}.linux-amd64.tar.gz
 sudo tar -C /usr/local -xzf /tmp/go${GO_VERSION}.linux-amd64.tar.gz
 echo 'export PATH=$PATH:/usr/local/go/bin' | sudo tee -a /etc/profile.d/go.sh
