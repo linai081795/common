@@ -904,7 +904,7 @@ esac
 if [[ -n "${Arch}" ]] && [[ "${AdGuardHome_Core}" == "1" ]]; then
   rm -rf ${HOME_PATH}/AdGuardHome && rm -rf ${HOME_PATH}/files/usr/bin
   if [[ ! -f "$LINSHI_COMMON/language/AdGuardHome.api" ]]; then
-    if ! wget -q https://github.com/linai081795/common/releases/download/API/AdGuardHome.api -O "$LINSHI_COMMON/language/AdGuardHome.api"; then
+    if ! wget -q https://github.com/281677160/common/releases/download/API/AdGuardHome.api -O "$LINSHI_COMMON/language/AdGuardHome.api"; then
       TIME r "AdGuardHome.api下载失败"
     fi
   fi
