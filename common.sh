@@ -182,6 +182,8 @@ fi
 
 echo "src-git danshui https://github.com/281677160/openwrt-package.git;$SOURCE" >> "${HOME_PATH}/feeds.conf.default"
 echo "src-git dstheme https://github.com/281677160/openwrt-package.git;$THEME_BRANCH" >> "${HOME_PATH}/feeds.conf.default"
+echo 'src-git istore https://github.com/linkease/istore;main' >> "${HOME_PATH}/feeds.conf.default"
+
 [[ "${OpenClash_branch}" == "1" ]] && echo "src-git OpenClash https://github.com/vernesong/OpenClash.git;master" >> "${HOME_PATH}/feeds.conf.default"
 [[ "${OpenClash_branch}" == "2" ]] && echo "src-git OpenClash https://github.com/vernesong/OpenClash.git;dev" >> "${HOME_PATH}/feeds.conf.default"
 
@@ -213,7 +215,7 @@ fi
 
 # 更新feeds后再次修改补充
 cd ${HOME_PATH}
-z="luci-theme-argon,luci-app-argon-config,luci-theme-Butterfly,luci-theme-netgear,luci-theme-atmaterial, \
+z="luci-theme-argon,luci-app-store,luci-theme-Butterfly,luci-theme-netgear,luci-theme-atmaterial, \
 luci-theme-rosy,luci-theme-darkmatter,luci-theme-infinityfreedom,luci-theme-design,luci-app-design-config, \
 luci-theme-bootstrap-mod,luci-theme-freifunk-generic,luci-theme-opentomato,luci-theme-kucat, \
 luci-app-eqos,adguardhome,luci-app-adguardhome,mosdns,luci-app-mosdns,luci-app-openclash, \
@@ -294,6 +296,10 @@ else
   if grep -q "luci-app-autoupdate" "${HOME_PATH}/include/target.mk"; then
     sed -i 's?luci-app-autoupdate ??g' ${HOME_PATH}/include/target.mk
   fi
+fi
+
+if grep -q "tailscale=y" $MYCONFIG_FILE; then
+  sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' ${HOME_PATH}/feeds/packages/net/tailscale/Makefile
 fi
 
 # N1类型固件修改
