@@ -329,6 +329,11 @@ function Diy_LIENOL() {
 cd ${HOME_PATH}
 rm -rf $HOME_PATH/feeds/packages/net/miniupnpd
 gitsvn https://github.com/openwrt/packages/tree/master/net/tailscale ${HOME_PATH}/feeds/packages/net/tailscale
+
+if grep -q "tailscale=y" $MYCONFIG_FILE; then
+  sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' ${HOME_PATH}/feeds/packages/net/tailscale/Makefile
+fi
+
 if [[ -d "${HOME_PATH}/feeds/other/lean" ]]; then
   rm -rf ${HOME_PATH}/feeds/other/lean/mt
   rm -rf ${HOME_PATH}/feeds/other/lean/luci-app-vlmcsd
