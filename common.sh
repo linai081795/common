@@ -301,6 +301,7 @@ fi
 
 if grep -q "tailscale=y" $MYCONFIG_FILE; then
   sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' ${HOME_PATH}/feeds/packages/net/tailscale/Makefile
+  gitsvn https://github.com/asvow/luci-app-tailscale "${HOME_PATH}/package/luci-app-tailscale"
 fi
 
 # N1类型固件修改
